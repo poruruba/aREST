@@ -1489,12 +1489,12 @@ bool send_command(bool headers, bool decodeArgs) {
     if (decodeArgs)
       urldecode(arguments); // Modifies arguments
 
-    int result = functions[value](arguments);
+    String result = functions[value](arguments);
 
     // Send feedback to client
     if (!LIGHTWEIGHT) {
       addToBufferF(F("{\"return_value\": "));
-      addToBuffer(result, true);
+      addStringToBuffer(result.c_str(), true);
       addToBufferF(F(", "));
       // addToBufferF(F(", \"message\": \""));
       // addStringToBuffer(functions_names[value]);
@@ -1577,7 +1577,7 @@ virtual void root_answer() {
 }
 
 
-void function(char * function_name, int (*f)(String)){
+void function(char * function_name, String (*f)(String)){
 
   functions_names[functions_index] = function_name;
   functions[functions_index] = f;
@@ -2013,7 +2013,7 @@ private:
   char * subscriptions_names[NUMBER_SUBSCRIPTIONS];
 
   // aREST.io server
-  char* mqtt_server = "142.93.194.74";
+  char* mqtt_server = "104.248.48.85";
   bool private_mqtt_server;
 
   #endif
@@ -2021,7 +2021,7 @@ private:
 
   // Functions array
   uint8_t functions_index;
-  int (*functions[NUMBER_FUNCTIONS])(String);
+  String (*functions[NUMBER_FUNCTIONS])(String);
   char * functions_names[NUMBER_FUNCTIONS];
 
   // Memory debug
