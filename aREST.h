@@ -7,7 +7,7 @@
   This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License:
   http://creativecommons.org/licenses/by-sa/4.0/
 
-  Version 2.9.0
+  Version 2.9.0.s1
   Changelog:
 
   Version 2.9.0: Compatibility fix for the new aREST cloud server
